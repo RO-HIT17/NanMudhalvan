@@ -61,39 +61,179 @@ const nutritionalInfo = {
     calories: '52 kcal',
     fiber: '2.4g',
     vitamin_c: '4.6mg',
-    benefits: ['Heart Health', 'Blood Sugar Control', 'Anti-inflammatory']
+    benefits: ['Heart Health', 'Blood Sugar Control', 'Anti-inflammatory'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
   },
   'Banana': {
     calories: '89 kcal',
     fiber: '2.6g',
     potassium: '358mg',
-    benefits: ['Energy Boost', 'Digestive Health', 'Muscle Function']
+    benefits: ['Energy Boost', 'Digestive Health', 'Muscle Function'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
   },
   'Orange': {
     calories: '43 kcal',
     fiber: '2.4g',
     vitamin_c: '53.2mg',
-    benefits: ['Immune Support', 'Skin Health', 'Antioxidants']
+    benefits: ['Immune Support', 'Skin Health', 'Antioxidants'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
   },
   'Grapes': {
     calories: '69 kcal',
     fiber: '0.9g',
     vitamin_k: '14.6mcg',
-    benefits: ['Heart Health', 'Anti-aging', 'Brain Function']
+    benefits: ['Heart Health', 'Anti-aging', 'Brain Function'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
   },
   'Mango': {
     calories: '60 kcal',
     fiber: '1.6g',
     vitamin_a: '54mcg',
-    benefits: ['Eye Health', 'Immunity', 'Digestion']
+    benefits: ['Eye Health', 'Immunity', 'Digestion'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
   },
   'Pineapple': {
     calories: '50 kcal',
     fiber: '1.4g',
     vitamin_c: '47.8mg',
-    benefits: ['Anti-inflammatory', 'Digestion', 'Immune Support']
+    benefits: ['Anti-inflammatory', 'Digestion', 'Immune Support'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
+  },
+  'Strawberry': {
+    calories: '32 kcal',
+    fiber: '2g',
+    vitamin_c: '58.8mg',
+    benefits: ['Heart Health', 'Antioxidants', 'Skin Glow'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
+  },
+  'Watermelon': {
+    calories: '30 kcal',
+    fiber: '0.4g',
+    vitamin_c: '8.1mg',
+    benefits: ['Hydration', 'Muscle Recovery', 'Heart Health'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
+  },
+  'Papaya': {
+    calories: '43 kcal',
+    fiber: '1.7g',
+    vitamin_c: '60.9mg',
+    benefits: ['Digestion', 'Immunity', 'Eye Health'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
+  },
+  'Kiwi': {
+    calories: '41 kcal',
+    fiber: '2.1g',
+    vitamin_c: '92.7mg',
+    benefits: ['Immune Boost', 'Skin Health', 'Iron Absorption'],
+    origin: 'India',
+    packaging: 'Eco-Friendly'
+  },
+  'Carrot': {
+    calories: '41 kcal',
+    fiber: '2.8g',
+    vitamin_c: '5.9mg',
+    benefits: ['Eye Health', 'Antioxidants', 'Weight Loss'],
+    origin: 'India',
+    packaging: 'Plastic Bag'
+  },
+  'Broccoli': {
+    calories: '34 kcal',
+    fiber: '2.6g',
+    vitamin_c: '89.2mg',
+    benefits: ['Detoxification', 'Heart Health', 'Bone Health'],
+    origin: 'India',
+    packaging: 'Shrink Wrap'
+  },
+  'Tomato': {
+    calories: '18 kcal',
+    fiber: '1.2g',
+    vitamin_c: '13.7mg',
+    benefits: ['Heart Health', 'Cancer Prevention', 'Skin Glow'],
+    origin: 'India',
+    packaging: 'Net Bag'
+  },
+  'Potato': {
+    calories: '77 kcal',
+    fiber: '2.2g',
+    vitamin_c: '19.7mg',
+    benefits: ['Energy', 'Satiety', 'Blood Pressure Control'],
+    origin: 'India',
+    packaging: 'Gunny Sack'
+  },
+  'Onion': {
+    calories: '40 kcal',
+    fiber: '1.7g',
+    vitamin_c: '7.4mg',
+    benefits: ['Heart Health', 'Blood Sugar Control', 'Anti-Inflammatory'],
+    origin: 'India',
+    packaging: 'Mesh Bag'
+  },
+  'Milk': {
+    calories: '42 kcal per 100ml',
+    fiber: '0g',
+    vitamin_c: '0mg',
+    benefits: ['Bone Health', 'Muscle Growth', 'Hydration'],
+    origin: 'India',
+    packaging: 'Tetra Pak'
+  },
+  'Cheese': {
+    calories: '402 kcal per 100g',
+    fiber: '0g',
+    vitamin_c: '0mg',
+    benefits: ['Bone Strength', 'Muscle Support', 'Energy Boost'],
+    origin: 'India',
+    packaging: 'Vacuum Sealed'
+  },
+  'Yogurt': {
+    calories: '59 kcal per 100g',
+    fiber: '0g',
+    vitamin_c: '0.5mg',
+    benefits: ['Gut Health', 'Weight Management', 'Bone Health'],
+    origin: 'India',
+    packaging: 'Plastic Cup'
+  },
+  'Chips': {
+    calories: '536 kcal per 100g',
+    fiber: '4.8g',
+    vitamin_c: '11mg',
+    benefits: ['Quick Snack', 'Energy Boost', 'Taste Satisfaction'],
+    origin: 'India',
+    packaging: 'Foil Pack'
+  },
+  'Chocolate': {
+    calories: '546 kcal per 100g',
+    fiber: '3.4g',
+    vitamin_c: '0mg',
+    benefits: ['Mood Booster', 'Antioxidants', 'Heart Health'],
+    origin: 'India',
+    packaging: 'Paper Wrap'
+  },
+  'Soda': {
+    calories: '41 kcal per 100ml',
+    fiber: '0g',
+    vitamin_c: '0mg',
+    benefits: ['Refreshment', 'Quick Energy', 'Taste'],
+    origin: 'India',
+    packaging: 'Glass Bottle'
+  },
+  'Juice': {
+    calories: '45 kcal per 100ml',
+    fiber: '0.2g',
+    vitamin_c: '50mg',
+    benefits: ['Hydration', 'Immunity', 'Natural Sweetness'],
+    origin: 'India',
+    packaging: 'PET Bottle'
   }
-};
+};  
 
 function ProductDetails() {
   const { id } = useParams();
@@ -208,8 +348,11 @@ function ProductDetails() {
                 <Typography variant="body1" paragraph>
                   <strong>Fiber:</strong> {nutrition.fiber}
                 </Typography>
-                <Typography variant="body1" paragraph>
-                  <strong>Origin:</strong> {product.origin || 'India'}
+                 <Typography variant="body1" paragraph>
+                  <strong>Origin:</strong> {nutrition.origin}
+                </Typography>
+                 <Typography variant="body1" paragraph>
+                  <strong>Packaging:</strong> {nutrition.packaging}
                 </Typography>
               </Box>
             </Grid>
@@ -232,6 +375,26 @@ function ProductDetails() {
               </Box>
             </Grid>
           </Grid>
+        </Box>
+
+        <Box sx={{ mt: 6 }}>
+          <Typography variant="h4" gutterBottom sx={{ fontWeight: 600 }}>
+            Customer Reviews
+          </Typography>
+          <Box sx={{ bgcolor: '#f8f9fa', borderRadius: '12px', p: 3 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <Rating value={5} readOnly />
+              <Typography variant="body2" sx={{ ml: 1 }}>
+                Excellent product! - John Doe
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+              <Rating value={4} readOnly />
+              <Typography variant="body2" sx={{ ml: 1 }}>
+                Good quality and taste. - Jane Smith
+              </Typography>
+            </Box>
+          </Box>
         </Box>
       </ProductDetailsPaper>
 

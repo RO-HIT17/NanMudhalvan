@@ -20,10 +20,12 @@ import IconButton from '@mui/material/IconButton';
 import Divider from '@mui/material/Divider';
 
 const CartContainer = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  borderRadius: '12px',
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+  padding: theme.spacing(4),
+  borderRadius: '20px',
+  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.05)',
   backgroundColor: '#fff',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  border: '1px solid rgba(0, 0, 0, 0.05)',
 }));
 
 const CartList = styled(List)(({ theme }) => ({
@@ -32,14 +34,16 @@ const CartList = styled(List)(({ theme }) => ({
 }));
 
 const CartItem = styled(ListItem)(({ theme }) => ({
-  padding: theme.spacing(2),
+  padding: theme.spacing(3),
   marginBottom: theme.spacing(2),
-  borderRadius: '8px',
+  borderRadius: '16px',
   backgroundColor: '#f8f9fa',
-  transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  border: '1px solid rgba(0, 0, 0, 0.05)',
   '&:hover': {
-    transform: 'translateY(-2px)',
-    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+    transform: 'translateY(-4px)',
+    boxShadow: '0 8px 16px rgba(0, 0, 0, 0.08)',
+    backgroundColor: '#fff',
   },
 }));
 
@@ -51,24 +55,38 @@ const EmptyCartBox = styled(Box)(({ theme }) => ({
 }));
 
 const CheckoutButton = styled(Button)(({ theme }) => ({
-  marginTop: theme.spacing(3),
-  padding: theme.spacing(1.5),
+  marginTop: theme.spacing(4),
+  padding: theme.spacing(2),
   fontWeight: 600,
-  fontSize: '1.1rem',
+  fontSize: '1.2rem',
+  borderRadius: '50px',
   backgroundColor: 'var(--primary-color)',
   '&:hover': {
-    backgroundColor: '#388e3c',
-    transform: 'translateY(-2px)',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    backgroundColor: 'var(--gradient-end)',
+    transform: 'translateY(-4px)',
+    boxShadow: '0 8px 20px rgba(46, 204, 113, 0.3)',
   },
-  transition: 'all 0.2s ease-in-out',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 }));
 
 const QuantityTextField = styled(TextField)(({ theme }) => ({
-  width: '80px',
+  width: '100px',
   '& .MuiOutlinedInput-root': {
-    borderRadius: '8px',
+    borderRadius: '12px',
     backgroundColor: '#fff',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      backgroundColor: '#f8f9fa',
+      '& fieldset': {
+        borderColor: 'var(--primary-color)',
+      }
+    },
+    '&.Mui-focused': {
+      '& fieldset': {
+        borderColor: 'var(--primary-color)',
+        borderWidth: '2px',
+      }
+    }
   },
 }));
 
@@ -80,13 +98,14 @@ const DeleteButton = styled(IconButton)(({ theme }) => ({
 }));
 
 const TotalBox = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(3),
-  padding: theme.spacing(2),
-  borderRadius: '8px',
-  backgroundColor: '#f1f8e9',
+  marginTop: theme.spacing(4),
+  padding: theme.spacing(3),
+  borderRadius: '16px',
+  backgroundColor: 'rgba(46, 204, 113, 0.08)',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  border: '1px solid rgba(46, 204, 113, 0.2)',
 }));
 
 function ShoppingCart() {
@@ -100,16 +119,13 @@ function ShoppingCart() {
   };
 
   return (
-    <Container maxWidth="md" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, textAlign: 'center' }}>
+    <Container maxWidth="md" className="fade-in">
+      <Box className="section">
         <Typography
           variant="h3"
+          className="section-title"
           component="h1"
           gutterBottom
-          sx={{
-            fontWeight: 700,
-            color: 'var(--primary-color)',
-          }}
         >
           Shopping Cart
         </Typography>

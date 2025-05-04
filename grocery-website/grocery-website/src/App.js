@@ -14,11 +14,12 @@ import AboutUs from './components/pages/AboutUs';
 import FAQ from './components/pages/FAQ';
 import TermsAndConditions from './components/pages/TermsAndConditions';
 import PrivacyPolicy from './components/pages/PrivacyPolicy';
+import OrderConfirmation from './components/OrderConfirmation';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { CartProvider } from './CartContext';
 import './App.css';
 
-// Protected Route component
+
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
   if (!isAuthenticated) {
@@ -27,7 +28,7 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-// Layout component with Header and Footer
+
 const Layout = ({ children }) => (
   <>
     <Header />
@@ -43,12 +44,12 @@ function App() {
         <CartProvider>
           <div className="App">
             <Routes>
-              {/* Auth routes (no header/footer) */}
+             
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
 
-            {/* Protected routes with header/footer */}
+            
             <Route
               path="/"
               element={
@@ -139,9 +140,19 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            </Routes>
-          </div>
-        </CartProvider>
+            <Route
+              path="/order-confirmation"
+              element={
+                <ProtectedRoute>
+                  <Layout>
+                    <OrderConfirmation />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </div>
+      </CartProvider>
       </AuthProvider>
     </BrowserRouter>
   );

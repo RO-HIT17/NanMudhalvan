@@ -10,7 +10,6 @@ export const CartProvider = ({ children }) => {
       const existingItem = currentCart.find(item => item.id === product.id);
       
       if (existingItem) {
-        // If item exists, increase quantity
         return currentCart.map(item =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + 1 }
@@ -18,7 +17,6 @@ export const CartProvider = ({ children }) => {
         );
       }
       
-      // If item doesn't exist, add it with quantity 1
       return [...currentCart, { ...product, quantity: 1 }];
     });
   };

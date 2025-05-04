@@ -21,8 +21,15 @@ import { styled, useTheme } from '@mui/material/styles';
 import { useAuth } from '../contexts/AuthContext';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: 'var(--primary-color)',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+  background: 'linear-gradient(to right, var(--gradient-start), var(--gradient-end))',
+  boxShadow: 'none',
+  backdropFilter: 'blur(8px)',
+  backgroundColor: 'rgba(255, 255, 255, 0.9)',
+  transition: 'all 0.3s ease',
+  '&.scrolled': {
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+  }
 }));
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -49,12 +56,15 @@ const Title = styled(Typography)(({ theme }) => ({
 const NavButton = styled(Button)(({ theme }) => ({
   color: 'white',
   marginLeft: theme.spacing(2),
-  fontWeight: 500,
+  fontWeight: 600,
+  borderRadius: '50px',
+  padding: '8px 20px',
   '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
     transform: 'translateY(-2px)',
+    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
   },
-  transition: 'transform 0.2s ease-in-out',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 }));
 
 const DrawerContent = styled(Box)(({ theme }) => ({
@@ -67,6 +77,19 @@ function Header() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [scrolled]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -108,7 +131,7 @@ function Header() {
   );
 
   return (
-    <StyledAppBar position="sticky">
+    <StyledAppBar position="fixed" className={scrolled ? 'scrolled' : ''}>
       <StyledToolbar>
         <Typography variant="h6" component={Link} to="/" sx={{ flexGrow: 1, textDecoration: 'none', color: 'white' }}>
           <Title component="div">

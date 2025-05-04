@@ -23,9 +23,13 @@ import { styled } from '@mui/material/styles';
 const LoginContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  minHeight: 'calc(100vh - 64px)',
+  minHeight: '100vh',
   padding: theme.spacing(3),
   width: '100%',
+  //backgroundImage: 'url(/chips-643_640.jpg)',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
 }));
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -106,9 +110,15 @@ function Login() {
       setError('Please enter a valid email address');
       return;
     }
-
-    login();
-    navigate('/');
+    const user_name = localStorage.getItem("username");
+    const password = localStorage.getItem("password")
+    if(user_name === formData.email && formData.password === password) {
+      login();
+      navigate('/');
+  }
+  else {
+    setError('Login failed. Incorrect email or password.');
+  }
   };
 
   return (

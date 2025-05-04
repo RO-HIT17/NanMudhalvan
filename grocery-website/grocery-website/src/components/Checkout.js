@@ -19,8 +19,19 @@ import { CartContext } from '../CartContext';
 import { Link } from 'react-router-dom';
 
 const CheckoutContainer = styled(Container)(({ theme }) => ({
-  paddingTop: theme.spacing(4),
-  paddingBottom: theme.spacing(6),
+  paddingTop: theme.spacing(6),
+  paddingBottom: theme.spacing(8),
+  animation: 'fadeIn 0.5s ease-out',
+  '@keyframes fadeIn': {
+    from: {
+      opacity: 0,
+      transform: 'translateY(20px)',
+    },
+    to: {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+  },
 }));
 
 const CheckoutTitle = styled(Typography)(({ theme }) => ({
@@ -32,31 +43,66 @@ const CheckoutTitle = styled(Typography)(({ theme }) => ({
 
 const FormContainer = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(4),
-  borderRadius: '12px',
-  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+  borderRadius: '20px',
+  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.05)',
+  border: '1px solid rgba(0, 0, 0, 0.05)',
+  backgroundColor: '#fff',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
 }));
 
 const OrderSummary = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(3),
-  borderRadius: '12px',
+  padding: theme.spacing(4),
+  borderRadius: '20px',
   backgroundColor: '#f8f9fa',
   height: '100%',
+  border: '1px solid rgba(0, 0, 0, 0.05)',
+  transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+  '&:hover': {
+    boxShadow: '0 15px 30px rgba(0, 0, 0, 0.05)',
+    transform: 'translateY(-4px)',
+  }
 }));
 
 const SuccessContainer = styled(Paper)(({ theme }) => ({
-  padding: theme.spacing(6),
+  padding: theme.spacing(8),
   textAlign: 'center',
-  borderRadius: '12px',
-  backgroundColor: '#f1f8e9',
+  borderRadius: '20px',
+  backgroundColor: 'rgba(46, 204, 113, 0.08)',
   marginTop: theme.spacing(4),
+  border: '1px solid rgba(46, 204, 113, 0.2)',
+  animation: 'fadeIn 0.5s ease-out',
+  '@keyframes fadeIn': {
+    from: {
+      opacity: 0,
+      transform: 'translateY(20px)',
+    },
+    to: {
+      opacity: 1,
+      transform: 'translateY(0)',
+    },
+  },
 }));
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
-    borderRadius: '8px',
-    '&.Mui-focused fieldset': {
-      borderColor: 'var(--primary-color)',
+    borderRadius: '12px',
+    transition: 'all 0.3s ease',
+    '&:hover': {
+      '& fieldset': {
+        borderColor: 'var(--primary-color)',
+      }
     },
+    '&.Mui-focused': {
+      '& fieldset': {
+        borderColor: 'var(--primary-color)',
+        borderWidth: '2px',
+      }
+    },
+  },
+  '& .MuiInputLabel-root': {
+    '&.Mui-focused': {
+      color: 'var(--primary-color)',
+    }
   },
 }));
 
@@ -80,6 +126,14 @@ function Checkout() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const order = {
+      orderId: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+      date: new Date().toLocaleDateString(),
+      items: cart.map(item => ({ name: item.name, quantity: item.quantity, price: item.price })),
+      total: getCartTotal(),
+      shippingAddress: formData
+    };
+    localStorage.setItem('order', JSON.stringify(order));
     setSubmitted(true);
   };
 
@@ -101,7 +155,7 @@ function Checkout() {
           <Button
             variant="contained"
             component={Link}
-            to="/products"
+            to="/order-confirmation"
             startIcon={<ShoppingBagIcon />}
             sx={{
               mt: 3,
@@ -118,9 +172,11 @@ function Checkout() {
 
   return (
     <CheckoutContainer maxWidth="lg">
-      <CheckoutTitle variant="h3" gutterBottom>
-        Checkout
-      </CheckoutTitle>
+      <Box className="section">
+        <Typography variant="h3" className="section-title" gutterBottom>
+          Checkout
+        </Typography>
+      </Box>
       
       <Grid container spacing={4}>
         <Grid item xs={12} md={8}>
@@ -185,6 +241,7 @@ function Checkout() {
                     }}
                   />
                 </Grid>
+                
               </Grid>
             </Box>
           </FormContainer>
@@ -222,15 +279,17 @@ function Checkout() {
               fullWidth
               onClick={handleSubmit}
               sx={{
-                py: 1.5,
-                fontSize: '1.1rem',
+                py: 2,
+                fontSize: '1.2rem',
                 fontWeight: 600,
+                borderRadius: '50px',
                 backgroundColor: 'var(--primary-color)',
                 '&:hover': {
-                  backgroundColor: '#388e3c',
-                  transform: 'translateY(-2px)',
+                  backgroundColor: 'var(--gradient-end)',
+                  transform: 'translateY(-4px)',
+                  boxShadow: '0 8px 20px rgba(46, 204, 113, 0.3)',
                 },
-                transition: 'all 0.2s ease-in-out',
+                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
               }}
             >
               Place Order

@@ -24,8 +24,12 @@ import { styled } from '@mui/material/styles';
 const SignUpContainer = styled(Container)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  minHeight: 'calc(100vh - 64px)',
+  minHeight: '100vh',
   padding: theme.spacing(3),
+  backgroundImage: 'url(https://source.unsplash.com/random?nature)',
+  backgroundSize: 'cover',
+  backgroundRepeat: 'no-repeat',
+  backgroundPosition: 'center',
 }));
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
@@ -120,8 +124,10 @@ function SignUp() {
       setError('Passwords do not match');
       return;
     }
+    localStorage.setItem('username',formData.email);
+    localStorage.setItem('password',formData.password)
 
-    navigate('/login');
+    navigate('/');
   };
 
   return (
